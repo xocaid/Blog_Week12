@@ -28,3 +28,13 @@ body {
   grid-column-gap: 5px;
   grid-row-gap:20px;
 }
+/******************* SEARCH BAR **********************/
+.search-box{
+  outline: none;
+  width: 100%;
+  border: 1px solid pink;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: .5rem;
+margin: 10px;
+}

@@ -1,79 +1,60 @@
 import { useState, useEffect } from 'react';
+import SinglePost from './singlePost';
 
-const BlogPost = () => {
+const AllBlogPosts = () => {
   const [posts, setPosts] = useState([]);
-  const [previewPost, setPreviewPost] = useState(true);
+  // const [previewPost, setPreviewPost] = useState(true);
+
+  //To be able to use Search Bar - to Keep a record of all users & filter
+  const [allPosts, setAllPosts] = useState([]);
 
 
-  //TOGGLE - View Blog Preview
-  const handlePreviewPost = () => {
-    setPreviewPost(!previewPost);
-  };
+  // //TOGGLE - View Blog Preview
+  // const handlePreviewPost = () => {
+  //   setPreviewPost(!previewPost);
+  // };
 
   useEffect(() => {
     fetch("http://localhost:8080/posts")
       .then((response) => response.json())
       .then((singlePost) => {
+        //by adding setAllCards, it allows us to see all the data returned to the cards for the search bar
+        setAllPosts(singlePost);
         setPosts(singlePost);
       });
   }, []);
-  {/* //around each card that has been mapped, set a state for current card and if current card == post 
+  {/* around each card that has been mapped, set a state for current card and if current card == post 
   then just print out that one post, move ternary below return()
 state that saves id, if id==post.id then print otherwise won't print...state to empty string, 
 once you click set to specfic post id(would go with button) */}
+//if console.log(event)browser console will print an object, when you head to target->value you will see what you were typing, here the text is actually stored
 
+//FILTER FUNCTION - Search Bar
+const filterPosts = event => {
+  // console.log(event.target.value);
+  const value = event.target.value.toLowerCase();
+  const filteredAllPosts = allPosts.filter(
+    post => (`${post.author} ${post.title} ${post.post}`
+    .toLowerCase()
+    .includes(value))
+  )
+  //setCards(filteredAllCards) is to  display the cards we want to display at the time
+  setPosts(filteredAllPosts)
+}
 
   return (
+    <div>
+    {/* SearchBar */}
+    <input className='search-box' placeholder='Search' onInput={filterPosts}></input>
     <div className='allposts'>
 
-      {posts.map((post, index) => {
-        return (
-          <div className='post' key={index}>
-
-            <p >{post.Text} </p>
-            <p>{post.username} </p>
-            <p>{post.time} </p>
-            <button onClick={handlePreviewPost}>View more...</button>
-            <br />
-          </div>
-        )
-      }
+      {posts.map((post, index) => (
+        <SinglePost key={index} singlePost={post} />
+      )
       )}
+    </div>
     </div>
   );
 }
-export default BlogPost;
+export default AllBlogPosts;
 
-
-// return (
-//   <div>
-
-//     <div className='allposts'>
-
-//       {posts.map((post, index) => {
-//         return (
-//           <div className='post' key={index}>
-//             {previewPost ? (
-//               <>
-//                 <p >{post.Text} </p>
-//                 <p>{post.username} </p>
-//                 <p>{post.time} </p>
-//                 <button onClick={handlePreviewPost}>View more...</button>
-//                 <br />
-//               </>
-//             ) : (
-//               <>
-//                 <p>Testing</p>
-//                 <button onClick={handlePreviewPost}>View more...</button>
-//               </>
-//             )}
-//           </div>
-//         )
-//       }
-//       )}
-//     </div>
-
-//   </div>
-// );
-// }
-// export default BlogPost;
