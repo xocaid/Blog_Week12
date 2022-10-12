@@ -5,7 +5,7 @@ const SinglePost = ({ singlePost }) => {
   return (
     <div className="card">
       <div className="card_image">
-        <img src={singlePost.image} alt={singlePost.id}/>
+        <img src={singlePost.image} alt={singlePost.id} />
         <PostId identification={singlePost.id} />
       </div>
 
@@ -19,7 +19,7 @@ const SinglePost = ({ singlePost }) => {
       <div className="card_body">
         <p>{singlePost.post}</p>
       </div>
-
+<button id="my-btn">View More</button>
 
     </div>
   )

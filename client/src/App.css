@@ -1,40 +1,45 @@
 body {
   text-align: center;
   background-color: rgb(156, 156, 243);
-  color:white;
-  width:100vw;
+  color: white;
+  width: 100vw;
   min-height: 100vh;
+  background-image: linear-gradient(purple, skyblue);
 }
 
 /* Places each post in card format */
-.post{
+.post {
   border: 5px solid rgb(62, 35, 119);
   margin: 10px;
   padding: 20px 50px;
 
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 40%;
   font-size: 20px;
 }
+
 .post:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   background-color: rgb(93, 64, 123);
 }
+
 /* Aligns all post "cards" in a grid,limits of post going horizontally */
-.allposts{
-  display:grid;
+.allposts {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 5px;
-  grid-row-gap:20px;
+  grid-row-gap: 20px;
 }
+
 /******************* SEARCH BAR **********************/
-.search-box{
+.search-box {
   outline: none;
   width: 100%;
   border: 1px solid pink;
   font-size: 1rem;
   padding: 1rem;
   border-radius: .5rem;
-margin: 10px;
+  margin: 10px;
 }
+/******************* button **********************/
