@@ -9,7 +9,7 @@ const AllBlogPosts = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:8080/posts")
+    fetch("http://localhost:8080/junctionPA")
       .then((response) => response.json())
       .then((singlePost) => {
         //by adding setAllCards, it allows us to see all the data returned to the cards for the search bar

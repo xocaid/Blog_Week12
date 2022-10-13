@@ -27,8 +27,8 @@ const SinglePost = ({ singlePost }) => {
           </div>
 
           <div className="card_author">
-            <p>Author: {singlePost.author}</p>
-            <p>Date: {singlePost.date}</p>
+            <p>Author: {singlePost.name}</p>
+            <p>Date published: {singlePost.dates}</p>
           </div>
 
           <div className="card_body">

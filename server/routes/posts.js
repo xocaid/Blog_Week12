@@ -14,6 +14,40 @@ router.get("/", async (req, res) => {
   }
 });
 
+// POST Request - Posts
+router.post('/', async (req, res) => {
+  const posts = {
+    title: req.body.title,
+    post: req.body.post,
+    image: req.body.image,
+    dates: req.body.dates
+  };
+  console.log([posts.title, posts.post, posts.image, posts.dates]);
+
+  try {
+    const createdPost = await db.one(
+      'INSERT INTO posts(title, post, image, dates) VALUES($1, $2, $3, $4) RETURNING *',
+      [posts.title, posts.post, posts.image, posts.dates],
+    );
+    console.log(createdPost);
+    res.send(createdPost);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
+//DELETE Request - Posts
+router.delete("/:id", async (req, res) => {
+  // : acts as a placeholder
+  const postsId = req.params.id;
+  try {
+    await db.none("DELETE FROM posts WHERE id=$1", [postsId]);
+    res.send({ status: "success" });
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
 //GET Request - Posts DUMMY DATA
 // router.get("/", async (req, res) => {
 //   try {
