@@ -1,42 +1,51 @@
-import PostId from "./postID";
+import BlogImage from "./blogImage";
 import { useState } from "react";
 
 const SinglePost = ({ singlePost }) => {
 
   //FLIPCARD
-  const[flipCard, setFlipCard] = useState(true);
+  const [flipPost, setFlipPost] = useState(true);
 
 
   //FLIPCARD
-const handleFlipCard = () => {
-  setFlipCard(!flipCard)
-}
+  const handleFlipPost = () => {
+    setFlipPost(!flipPost)
+  }
 
 
   return (
-    <div className="card">
-      {flipCard ? (
+    <div className="singlePost">
+      {flipPost ? (
         <div>
-      <div className="card_image">
-        <img src={singlePost.image} alt={singlePost.id} />
-        <PostId identification={singlePost.id} />
-      </div>
+          <div className="card_image">
+            {/* <img src={singlePost.image} alt="photo1"/> */}
+            <BlogImage img={singlePost.image} alt={singlePost.id} />
+          </div>
 
-      <div className="card_title">
-        {singlePost.title}
-      </div>
-      <div className="card_author">
-        <p>Author: {singlePost.author}</p>
-        <p>{singlePost.date}</p>
-      </div>
-      <div className="card_body">
-        <p>{singlePost.post}</p>
-        <button id="my-btn" onClick={handleFlipCard}>View More</button>
-      </div>
-      </div>
-      ):(
+          <div className="card_title">
+            {singlePost.title}
+          </div>
+
+          <div className="card_author">
+            <p>Author: {singlePost.author}</p>
+            <p>Date: {singlePost.date}</p>
+          </div>
+
+          <div className="card_body">
+            <p>{singlePost.post.substring(0, 40)}...</p>
+            <button className='singlePost-btn' onClick={handleFlipPost}>View More</button>
+          </div>
+        </div>
+      ) : (
         <div>
-        <p>Testing</p>
+          <div className="card_image-full">
+            <BlogImage img={singlePost.image} alt={singlePost.id} />
+          </div>
+          <div className="card_body">
+            <p>{singlePost.post}</p>
+          </div>
+          <button className='singlePost-btn' onClick={handleFlipPost}>Back</button>
+
         </div>
       )}
     </div>

@@ -28,7 +28,7 @@ body {
 .allposts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 5px;
+  grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
 
@@ -42,4 +42,33 @@ body {
   border-radius: .5rem;
   margin: 10px;
 }
-/******************* button **********************/
+/******************* Card Details **********************/
+.singlePost{
+  background-color:rgb(171, 104, 239, 0.3) ;
+  padding: 10px;
+}
+.card_title{
+  font-weight: bold;
+  font-size: 30px;
+}
+.card_author{
+  color:white;
+  font-size: 10px;
+  text-align: left;
+}
+.singlePost-btn{
+  background-color: rgb(156, 81, 231);
+  border-radius: 5px;
+  border: none;
+  color: rgb(239, 240, 243);
+  font-weight: bold;
+  padding: 10px;
+}
+/******************* Image **********************/
+.post-img.container{
+  flex: auto;
+}
+.post-img{
+  height:250px;
+  width:250px;
+}
