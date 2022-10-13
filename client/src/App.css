@@ -42,21 +42,25 @@ body {
   border-radius: .5rem;
   margin: 10px;
 }
+
 /******************* Card Details **********************/
-.singlePost{
-  background-color:rgb(171, 104, 239, 0.3) ;
+.singlePost {
+  background-color: rgb(171, 104, 239, 0.3);
   padding: 10px;
 }
-.card_title{
+
+.card_title {
   font-weight: bold;
   font-size: 30px;
 }
-.card_author{
-  color:white;
+
+.card_author {
+  color: white;
   font-size: 10px;
   text-align: left;
 }
-.singlePost-btn{
+
+.singlePost-btn {
   background-color: rgb(156, 81, 231);
   border-radius: 5px;
   border: none;
@@ -64,43 +68,48 @@ body {
   font-weight: bold;
   padding: 10px;
 }
+
 /******************* Image **********************/
-.post-img.container{
+.post-img.container {
   flex: auto;
 }
-.post-img{
-  height:250px;
-  width:250px;
+
+.post-img {
+  height: 250px;
+  width: 250px;
 }
 
-
-.subscribe{
+/******************* Subscribe Popup **********************/
+.subscribe {
   width: 100%;
-  background-image: linear-gradient(skyblue,purple);
+  background-image: linear-gradient(skyblue, purple);
 }
-.subscribe-box{
-  width:80%;
+
+.subscribe-box {
+  width: 80%;
   margin: 0 auto;
   padding: 8rem 0;
 
-  
-display: grid;
-grid-template-columns: 1.5fr 2fr;
-align-items: center;
-  
+
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  align-items: center;
+
 }
-.subscribe-box-left h2{
+
+.subscribe-box-left h2 {
   font-size: 3rem;
 
 }
-.subscribe-box p{
+
+.subscribe-box p {
   font-size: 1.2rem;
 }
 
-.subscribe-box-left-input{
+.subscribe-box-left-input {
   margin-top: 3rem;
   padding: 2rem;
-  width:80%;
+  width: 80%;
   border-radius: 4rem;
   background-color: powderblue;
   color: blue;
@@ -108,27 +117,56 @@ align-items: center;
   display: flex;
   align-items: center;
 }
+
 .subscribe-box-left-input input {
   background-color: transparent;
   border: 0;
   outline: none;
   width: 90%;
 }
-.subscribe-box-left-input input::placeholder{
+
+.subscribe-box-left-input input::placeholder {
   color: purple;
   font-size: 1.2rem;
 }
-.subscribe-box-left-input button{
+
+.subscribe-box-left-input button {
   padding: 5px;
   border: 1px solid purple;
   font-weight: bold;
   font-size: 15px;
   border-radius: 5px;
   background-color: transparent;
-  color:purple;
+  color: purple;
 }
-.subscribe-box-left-input button:hover{
+
+.subscribe-box-left-input button:hover {
   background-color: purple;
   transition: .3s;
-  color:powderblue;
+  color: powderblue;
+}
+
+/******************* Subscribe Modal **********************/
+.subscribe-button {
+  padding: 15px;
+  /* border: 1px solid purple; */
+  border:none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: rgb(156, 81, 231);
+  color: white;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  align-content: right;
+
+}
+.footer{
+  margin-bottom: 1rem;
 }

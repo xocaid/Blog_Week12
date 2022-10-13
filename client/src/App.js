@@ -1,5 +1,5 @@
 import './App.css';
-import AllBlogPosts from './components/allPosts';
+import AllBlogPosts from './components/Posts/allPosts';
 import Footer from './components/margins/footer'
 import Header from './components/margins/header';
 

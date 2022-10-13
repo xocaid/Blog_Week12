@@ -1,7 +1,10 @@
+import Subscribe from "../subscribePopup";
 const Footer = () => {
 
   return (
-    <h5>Footer H5</h5>
+    <div className="footer">
+      <Subscribe />
+    </div>
   )
 }
 export default Footer;
