@@ -32,7 +32,8 @@ const SinglePost = ({ singlePost }) => {
           </div>
 
           <div className="card_body">
-            <p>{singlePost.post.substring(0, 40)}...</p>
+            {/* <p>{singlePost.post.substring(0, 40)}...</p> */}
+            <p>{singlePost.post}</p>
             <button className='singlePost-btn' onClick={handleFlipPost}>View More</button>
           </div>
         </div>

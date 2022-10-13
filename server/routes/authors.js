@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 // POST Request - Authors
 router.post('/', async (req, res) => {
   const posts = {
-    name: req.body.title,
+    name: req.body.name,
     post_id: req.body.post_id
   };
   console.log([posts.name, posts.post_id]);

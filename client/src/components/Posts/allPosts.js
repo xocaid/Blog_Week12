@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import SinglePost from './singlePost';
+import AddPost from '../CRUD/addBlog/addPost';
 
 
 const AllBlogPosts = () => {
@@ -17,6 +18,15 @@ const AllBlogPosts = () => {
         setPosts(singlePost);
       });
   }, []);
+
+    //ADD SPECIES - EVENT HANDLER
+  const handleAddPost = (post) => {
+    setPosts((post) => [...post, post]);
+  };
+      //ADD SPECIES - EVENT HANDLER
+      const handleAddAuthor = (author) => {
+        setPosts((author) => [...author, author]);
+      };
 
   {/* around each card that has been mapped, set a state for current card and if current card == post 
   then just print out that one post, move ternary below return()
@@ -54,7 +64,7 @@ once you click set to specfic post id(would go with button) */}
 
 
       <div className='registerbtn'>
-
+<AddPost addPost={handleAddPost} addAuthor={handleAddAuthor}/>
       </div>
     </div>
   );
