@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import SinglePost from './singlePost';
-import AddBlogForm from '../CRUD/addBlog/addBlogForm';
-import AddPost from '../CRUD/addBlog/notWorking';
+import AddPost from '../workingAddPost';
 
 
 const AllBlogPosts = () => {
@@ -94,10 +93,8 @@ once you click set to specfic post id(would go with button) */}
         )}
       </div>
       <div>
-        <AddBlogForm />
 
-        <br />
-        <h4>This is the AddPost displaying from allPosts component.</h4>
+        <h4>This is the workingAddPost.js displaying on allPosts component.</h4>
         <AddPost addpost={handleInfo}/>
 
       </div>
