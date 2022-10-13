@@ -74,8 +74,8 @@ once you click set to specfic post id(would go with button) */}
 
 
   const handleInfo = (newPost, newAuthor) => {
-    console.log(newPost, 'This is the parent')
-    console.log(newAuthor, 'This is fomr the PARENT')
+    console.log(newPost, 'Post is printing from allPost component')
+    console.log(newAuthor, 'Author is printing from allPost component')
     postPost(newPost)
     postAuthor(newAuthor)
   }
