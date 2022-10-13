@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import RegistrationForm from './registrationForm';
+// import SubscribeForm from './userRegistration';
 import SinglePost from './singlePost';
+import Modal from './simpleModal';
 
 const AllBlogPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -54,9 +55,10 @@ once you click set to specfic post id(would go with button) */}
 
 
       <div className='registerbtn'>
-          <RegistrationForm />
+          {/* <SubscribeForm /> */}
 
       </div>
+      <Modal />
     </div>
   );
 }

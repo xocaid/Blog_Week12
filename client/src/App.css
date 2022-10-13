@@ -72,3 +72,63 @@ body {
   height:250px;
   width:250px;
 }
+
+
+.subscribe{
+  width: 100%;
+  background-image: linear-gradient(skyblue,purple);
+}
+.subscribe-box{
+  width:80%;
+  margin: 0 auto;
+  padding: 8rem 0;
+
+  
+display: grid;
+grid-template-columns: 1.5fr 2fr;
+align-items: center;
+  
+}
+.subscribe-box-left h2{
+  font-size: 3rem;
+
+}
+.subscribe-box p{
+  font-size: 1.2rem;
+}
+
+.subscribe-box-left-input{
+  margin-top: 3rem;
+  padding: 2rem;
+  width:80%;
+  border-radius: 4rem;
+  background-color: powderblue;
+  color: blue;
+
+  display: flex;
+  align-items: center;
+}
+.subscribe-box-left-input input {
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  width: 90%;
+}
+.subscribe-box-left-input input::placeholder{
+  color: purple;
+  font-size: 1.2rem;
+}
+.subscribe-box-left-input button{
+  padding: 5px;
+  border: 1px solid purple;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: transparent;
+  color:purple;
+}
+.subscribe-box-left-input button:hover{
+  background-color: purple;
+  transition: .3s;
+  color:powderblue;
+}
