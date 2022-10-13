@@ -7,6 +7,7 @@ config();
 //ROUTES
 import db from './db/db-connection.js';
 import postsRouter from './routes/posts.js';
+import junctionPARouter from './routes/junctionPA.js';
 
 const app = express();
 const PORT = 8080;
@@ -14,6 +15,7 @@ const PORT = 8080;
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/posts', (postsRouter));
+app.use('/junctionPA', (junctionPARouter));
 
 app.get('/', (req, res) => {
   res.json('This is the backend.');
