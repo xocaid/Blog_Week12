@@ -1,28 +1,20 @@
 import { useState } from 'react';
 
 
-const AddPost = (props) => {
+const AddPost = ({ addPostCallback }) => {
   const [postForm, setPostForm] = useState({
     title: "",
-    // author: "",
     date: "",
     post: "",
-    // post_id: ""
   });
 
-const [authorForm, setAuthorForm] = useState({
-  author: '',
-  post_id: ''
-})
+
   //POSTS - create functions that handle the event of the user typing into the form
   const handleTitle = (event) => {
     const postTitle = event.target.value;
     setPostForm((post) => ({ ...post, title: postTitle }));
   };
-  // const handleAuthor = (event) => {
-  //   const postAuthor = event.target.value;
-  //   setPostForm((post) => ({ ...post, author: postAuthor }));
-  // };
+
   const handleDate = (event) => {
     const postDate = event.target.value;
     setPostForm((post) => ({ ...post, date: postDate }));
@@ -32,20 +24,6 @@ const [authorForm, setAuthorForm] = useState({
     setPostForm((post) => ({ ...post, post: postPost }));
   };
 
-  // const handlePostId = (event) => {
-  //   const postPostId = event.target.value;
-  //   setPostForm((post) => ({ ...post, post_id: postPostId }));
-  // };
-
-  //AUTHORS - create functions that handle the event of the user typing into the form
-  const handleAuthor = (event) => {
-    const postAuthor = event.target.value;
-    setAuthorForm((post) => ({ ...post, author: postAuthor }));
-  };
-  const handlePostId = (event) => {
-    const postPostId = event.target.value;
-    setAuthorForm((post) => ({ ...post, post_id: postPostId }));
-  };
 
 //POST Request - Posts
   const postPost = (newPost) => {
@@ -59,47 +37,24 @@ const [authorForm, setAuthorForm] = useState({
       })
       .then((data) => {
         console.log("From the post ", data);
-        props.addPost(data);
-      });
-  };
-  //POST Request - Authors
-  const postAuthor = (newAuthor) => {
-    return fetch("http://localhost:8080/authors", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newAuthor),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log("From the post ", data);
-        props.addAuthor(data);
+        addPostCallback.addPost(data);
       });
   };
 
-//addContact will be the props
-  const handleAddContact = (e) => {
+//addPost will be the props
+  const handleAddPost = (e) => {
     e.preventDefault();
     postPost(postForm);
-    postAuthor(authorForm);
-    postAuthor(postAuthor);
     setPostForm({
       title: "",
-      // author: "",
       date: "",
-      post: "",
-      // post_id: ""
-    })
-    setAuthorForm({
-      author: "",
-      post_id: ""
+      post: ""
     })
   };
   
 
   return (
-    <form onSubmit={handleAddContact} className="formborder" >
+    <form onSubmit={handleAddPost} className="formborder" >
       <fieldset>
 
       <label>Title: </label>
@@ -109,26 +64,6 @@ const [authorForm, setAuthorForm] = useState({
           required
           value={postForm.title}
           onChange={handleTitle}
-        />
-        <br />
-
-        <label>Author: </label>
-        <input
-          type="text"
-          id="add-author"
-          placeholder="Jane Smith"
-          required
-          value={postAuthor.author}
-          onChange={handleAuthor}
-        />
-        <br />
-
-        <label>Date: </label>
-        <input
-          type="date"
-          id="add-date"
-          value={postForm.date}
-          onChange={handleDate}
         />
         <br />
 
@@ -142,14 +77,12 @@ const [authorForm, setAuthorForm] = useState({
         />
         <br />
 
-        <label>Post ID: </label>
+        <label>Date: </label>
         <input
-          type="text"
-          id="add-postID"
-          placeholder="4"
-          required
-          value={postAuthor.post_id}
-          onChange={handlePostId}
+          type="date"
+          id="add-date"
+          value={postForm.date}
+          onChange={handleDate}
         />
         <br />
 

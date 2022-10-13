@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SinglePost from './singlePost';
-import AddPost from '../CRUD/addBlog/addPost';
+import AddBlogForm from '../CRUD/addBlog/addBlogForm';
+import AddPost from '../CRUD/addBlog/notWorking';
 
 
 const AllBlogPosts = () => {
@@ -18,15 +19,6 @@ const AllBlogPosts = () => {
         setPosts(singlePost);
       });
   }, []);
-
-    //ADD SPECIES - EVENT HANDLER
-  const handleAddPost = (post) => {
-    setPosts((post) => [...post, post]);
-  };
-      //ADD SPECIES - EVENT HANDLER
-      const handleAddAuthor = (author) => {
-        setPosts((author) => [...author, author]);
-      };
 
   {/* around each card that has been mapped, set a state for current card and if current card == post 
   then just print out that one post, move ternary below return()
@@ -47,24 +39,67 @@ once you click set to specfic post id(would go with button) */}
     setPosts(filteredAllPosts)
   }
 
+  //POST Request - Posts
+    const postPost = (newPost) => {
+      return fetch("http://localhost:8080/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newPost),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log("From the post ", data);
+          setPosts(data);
+        });
+    };
 
+    //POST Request - Authors
+    const postAuthor = (newAuthor) => {
+      return fetch("http://localhost:8080/authors", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAuthor),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log("From the post ", data);
+          setPosts(data);
+        });
+    };
+
+
+
+  const handleInfo = (newPost, newAuthor) => {
+    console.log(newPost, 'This is the parent')
+    console.log(newAuthor, 'This is fomr the PARENT')
+    postPost(newPost)
+    postAuthor(newAuthor)
+  }
 
   return (
     <div>
+
       {/* SearchBar */}
       <input className='search-box' placeholder='Search' onInput={filterPosts}></input>
       <div className='allposts'>
 
 
-        {posts.map((post) => (
-          <SinglePost key={post.id} singlePost={post} />
+        {posts.map((post, index) => (
+          <SinglePost key={index} singlePost={post} />
         )
         )}
       </div>
+      <div>
+        <AddBlogForm />
 
+        <br />
+        <h4>This is the AddPost displaying from allPosts component.</h4>
+        <AddPost addpost={handleInfo}/>
 
-      <div className='registerbtn'>
-<AddPost addPost={handleAddPost} addAuthor={handleAddAuthor}/>
       </div>
     </div>
   );
