@@ -6,7 +6,7 @@ const AllBlogPosts = () => {
   const [posts, setPosts] = useState([]);
   //To be able to use Search Bar - to Keep a record of all users & filter
   const [allPosts, setAllPosts] = useState([]);
-  const [displayRForm, setDisplayRForm] = useState(true);
+
 
   useEffect(() => {
     fetch("http://localhost:8080/posts")
@@ -23,10 +23,6 @@ const AllBlogPosts = () => {
 state that saves id, if id==post.id then print otherwise won't print...state to empty string, 
 once you click set to specfic post id(would go with button) */}
   //if console.log(event)browser console will print an object, when you head to target->value you will see what you were typing, here the text is actually stored
-  const handleClickForm = () => {
-    setDisplayRForm(!displayRForm);
-  }
-
 
   //FILTER FUNCTION - Search Bar
   const filterPosts = event => {
@@ -41,11 +37,14 @@ once you click set to specfic post id(would go with button) */}
     setPosts(filteredAllPosts)
   }
 
+
+
   return (
     <div>
       {/* SearchBar */}
       <input className='search-box' placeholder='Search' onInput={filterPosts}></input>
       <div className='allposts'>
+
 
         {posts.map((post) => (
           <SinglePost key={post.id} singlePost={post} />
@@ -53,12 +52,10 @@ once you click set to specfic post id(would go with button) */}
         )}
       </div>
 
+
       <div className='registerbtn'>
-        {displayRForm ?(
-        <button onClick={handleClickForm}>Register</button>
-        ):(
           <RegistrationForm />
-        )}
+
       </div>
     </div>
   );

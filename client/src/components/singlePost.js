@@ -1,9 +1,22 @@
 import PostId from "./postID";
+import { useState } from "react";
 
 const SinglePost = ({ singlePost }) => {
 
+  //FLIPCARD
+  const[flipCard, setFlipCard] = useState(true);
+
+
+  //FLIPCARD
+const handleFlipCard = () => {
+  setFlipCard(!flipCard)
+}
+
+
   return (
     <div className="card">
+      {flipCard ? (
+        <div>
       <div className="card_image">
         <img src={singlePost.image} alt={singlePost.id} />
         <PostId identification={singlePost.id} />
@@ -18,9 +31,14 @@ const SinglePost = ({ singlePost }) => {
       </div>
       <div className="card_body">
         <p>{singlePost.post}</p>
+        <button id="my-btn" onClick={handleFlipCard}>View More</button>
       </div>
-<button id="my-btn">View More</button>
-
+      </div>
+      ):(
+        <div>
+        <p>Testing</p>
+        </div>
+      )}
     </div>
   )
 
