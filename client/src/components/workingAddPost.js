@@ -24,6 +24,11 @@ const AddPost = (props) => {
     setPostForm((post) => ({ ...post, post: postPost }));
   };
 
+  const handleId = (e) => {
+    const postId = e.target.value;
+    setPostForm((post) => ({ ...post, id: postId }));
+  };
+
   //AUTHORS
   const [authorForm, setAuthorForm] = useState({
     name: '',
@@ -82,6 +87,16 @@ const AddPost = (props) => {
           onChange={handlePost}
         />
         <br />
+
+        <label>Post ID: </label>
+        <input
+          type="text"
+          id="add-postId"
+          placeholder="113"
+          value={postForm.id}
+          onChange={handleId}
+        />
+        <br />
 {/* ******************** AUTHOR - authorForm ******************* */}
         <label>Author: </label>
         <input
@@ -94,7 +109,7 @@ const AddPost = (props) => {
         />
         <br />
 
-        <label>Post ID: </label>
+        <label>Author ID: </label>
         <input
           type="text"
           id="add-postID"
@@ -106,7 +121,7 @@ const AddPost = (props) => {
         <br />
 
       </fieldset>
-      <button type="submit">Add</button>
+      <button type="submit"> Add Post </button>
     </form>
   );
 };

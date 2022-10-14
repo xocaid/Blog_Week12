@@ -6,7 +6,7 @@ const router = Router();
 // GET Request - Posts 
 router.get("/", async (req, res) => {
   try {
-    const posts = await db.any('SELECT * FROM posts ORDER BY title ASC', [true]);
+    const posts = await db.any('SELECT * FROM posts ORDER BY id', [true]);
     res.send(posts);
   } catch (e) {
     console.log(e);
@@ -17,16 +17,17 @@ router.get("/", async (req, res) => {
 // POST Request - Posts
 router.post('/', async (req, res) => {
   const posts = {
+    id: req.body.id,
     title: req.body.title,
     post: req.body.post,
     date: req.body.date
   };
-  console.log([posts.title, posts.post, posts.date]);
+  console.log('Printing from Posts in (POST)router',[posts.title, posts.post, posts.date, posts.id]);
 
   try {
     const createdPost = await db.one(
-      'INSERT INTO posts(title, post, date) VALUES($1, $2, $3) RETURNING *',
-      [posts.title, posts.post, posts.date],
+      'INSERT INTO posts(title, post, date, id) VALUES($1, $2, $3, $4) RETURNING *',
+      [posts.title, posts.post, posts.date, posts.id],
     );
     console.log(createdPost);
     res.send(createdPost);

@@ -8,6 +8,8 @@ const AllBlogPosts = () => {
   //To be able to use Search Bar - to Keep a record of all users & filter
   const [allPosts, setAllPosts] = useState([]);
 
+  const [seeAddBlog, setSeeAddBlog] = useState(false);
+
   const fetchAllPosts = () => {
     console.log('fetchAllPosts')
     fetch("http://localhost:8080/junctionPA")
@@ -70,8 +72,12 @@ once you click set to specfic post id(would go with button) */}
     console.log(newAuthor, 'Author is printing from allPost component')
     const postPromise = postPost(newPost)
     const authorPromise = postAuthor(newAuthor)
-    await Promise.all[postPromise,authorPromise]
+    await Promise.all[postPromise, authorPromise]
     fetchAllPosts();
+  }
+
+  const handleSeeAddBlog = () => {
+    setSeeAddBlog(!seeAddBlog)
   }
 
   return (
@@ -88,17 +94,24 @@ once you click set to specfic post id(would go with button) */}
           )
         }
         )}
+
         {/* {Object.keys(posts).map((index,post) => (
           <SinglePost key={index} singlePost={post} />
         ))
         } */}
-      </div>
-      <div>
-
-        <h4>This is the workingAddPost.js displaying on allPosts component.</h4>
-        <AddPost addNewSubmission={handleInfo} />
 
       </div>
+      {seeAddBlog ? (
+        <div>
+          <AddPost addNewSubmission={handleInfo} />
+          <button onClick={handleSeeAddBlog}> Close </button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={handleSeeAddBlog}> Add New Blog Post </button>
+        </div>
+
+      )}
     </div>
   );
 }

@@ -28,7 +28,8 @@ const SinglePost = ({ singlePost }) => {
 
           <div className="card_author">
             <p>Author: {singlePost.name}</p>
-            <p>Date published: {new Date(singlePost.dates).toLocaleString()}</p>
+            <p>Date published: {new Date(singlePost.date).toLocaleString()}</p>
+            {/* <p>Date published: {singlePost.date}</p> */}
           </div>
 
           <div className="card_body">
