@@ -1,11 +1,12 @@
 import BlogImage from "./blogImage";
 import { useState } from "react";
-
 const SinglePost = ({ singlePost }) => {
 
   //FLIPCARD
   const [flipPost, setFlipPost] = useState(true);
 
+  //If Image is null in DB, set a default photo
+  const [nullImage, setNullImage] = useState(null);
 
   //FLIPCARD
   const handleFlipPost = () => {
@@ -18,8 +19,7 @@ const SinglePost = ({ singlePost }) => {
       {flipPost ? (
         <div>
           <div className="card_image">
-            {/* <img src={singlePost.image} alt="photo1"/> */}
-            <BlogImage img={singlePost.image} alt={singlePost.id} />
+            <BlogImage img={singlePost.image ? singlePost.image : 'https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-1024x640.jpeg'} alt={singlePost.id} />
           </div>
 
           <div className="card_title">

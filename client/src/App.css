@@ -150,12 +150,24 @@ body {
 .subscribe-button {
   padding: 15px;
   /* border: 1px solid purple; */
-  border:none;
+  border: none;
   font-weight: bold;
   font-size: 15px;
   border-radius: 5px;
   background-color: rgb(156, 81, 231);
   color: white;
+}
+.addpostbutton {
+  padding: 15px;
+  /* border: 1px solid purple; */
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: rgb(156, 81, 231);
+  color: white;
+  margin: 10px;
+
 }
 
 .close {
@@ -167,6 +179,41 @@ body {
   align-content: right;
 
 }
-.footer{
+
+.footer {
   margin-bottom: 1rem;
+}
+
+fieldset {
+  border: none;
+}
+
+.seeAddBlogButton {
+  background-color: rgb(176, 224, 230, 0.6);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 20px;
+  /* width: 50%; */
+  display: inline-block;
+  font-weight: bold;
+  color: purple;
+  border-radius: 20px;
+}
+
+label {
+  text-align: center;
+  margin:10px;
+}
+
+.addlabel {
+  display: inline-block;
+  width: 60%;
+
+}
+
+.postentryinput {
+  word-wrap: break-word;
+  width: 250px;
+  height: 250px;
+
 }

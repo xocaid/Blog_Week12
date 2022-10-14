@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SinglePost from './singlePost';
-import AddPost from '../workingAddPost';
+import AddPost from '../CRUD/addBlog/addPost';
 
 
 const AllBlogPosts = () => {
@@ -102,13 +102,13 @@ once you click set to specfic post id(would go with button) */}
 
       </div>
       {seeAddBlog ? (
-        <div>
+        <div className='seeAddBlogButton'>
           <AddPost addNewSubmission={handleInfo} />
-          <button onClick={handleSeeAddBlog}> Close </button>
+          <button className='addpostbutton' onClick={handleSeeAddBlog}> Close </button>
         </div>
       ) : (
         <div>
-          <button onClick={handleSeeAddBlog}> Add New Blog Post </button>
+          <button className="addpostbutton" onClick={handleSeeAddBlog}> Add New Blog Post </button>
         </div>
 
       )}
