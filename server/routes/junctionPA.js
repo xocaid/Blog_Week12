@@ -7,7 +7,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const junctionPA = await db.any("SELECT posts.title, posts.post, posts.image, posts.dates, authors.name FROM posts, authors WHERE posts.id = authors.post_id");
+    const junctionPA = await db.any("SELECT posts.title, posts.post, posts.image, posts.date, authors.name FROM posts, authors WHERE posts.id = authors.post_id");
 
     res.send(junctionPA);
   } catch (e) {

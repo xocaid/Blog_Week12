@@ -19,14 +19,14 @@ router.post('/', async (req, res) => {
   const posts = {
     title: req.body.title,
     post: req.body.post,
-    dates: req.body.dates
+    date: req.body.date
   };
-  console.log([posts.title, posts.post, posts.dates]);
+  console.log([posts.title, posts.post, posts.date]);
 
   try {
     const createdPost = await db.one(
-      'INSERT INTO posts(title, post, dates) VALUES($1, $2, $3) RETURNING *',
-      [posts.title, posts.post, posts.dates],
+      'INSERT INTO posts(title, post, date) VALUES($1, $2, $3) RETURNING *',
+      [posts.title, posts.post, posts.date],
     );
     console.log(createdPost);
     res.send(createdPost);

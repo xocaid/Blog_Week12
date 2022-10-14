@@ -8,16 +8,22 @@ const AllBlogPosts = () => {
   //To be able to use Search Bar - to Keep a record of all users & filter
   const [allPosts, setAllPosts] = useState([]);
 
-
-  useEffect(() => {
+  const fetchAllPosts = () => {
+    console.log('fetchAllPosts')
     fetch("http://localhost:8080/junctionPA")
       .then((response) => response.json())
       .then((singlePost) => {
+        console.log(singlePost, "Testing");
         //by adding setAllCards, it allows us to see all the data returned to the cards for the search bar
         setAllPosts(singlePost);
         setPosts(singlePost);
       });
-  }, []);
+  };
+
+
+  useEffect(fetchAllPosts, []);
+
+
 
   {/* around each card that has been mapped, set a state for current card and if current card == post 
   then just print out that one post, move ternary below return()
@@ -39,44 +45,33 @@ once you click set to specfic post id(would go with button) */}
   }
 
   //POST Request - Posts
-    const postPost = (newPost) => {
-      return fetch("http://localhost:8080/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPost),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log("From the post ", data);
-          setPosts(data);
-        });
-    };
+  const postPost = (newPost) => {
+    return fetch("http://localhost:8080/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPost),
+    })
+  };
 
-    //POST Request - Authors
-    const postAuthor = (newAuthor) => {
-      return fetch("http://localhost:8080/authors", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newAuthor),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log("From the post ", data);
-          setPosts(data);
-        });
-    };
+  //POST Request - Authors
+  const postAuthor = (newAuthor) => {
+    return fetch("http://localhost:8080/authors", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newAuthor),
+    })
+
+  };
 
 
 
-  const handleInfo = (newPost, newAuthor) => {
+  const handleInfo = async (newPost, newAuthor) => {
     console.log(newPost, 'Post is printing from allPost component')
     console.log(newAuthor, 'Author is printing from allPost component')
-    postPost(newPost)
-    postAuthor(newAuthor)
+    const postPromise = postPost(newPost)
+    const authorPromise = postAuthor(newAuthor)
+    await Promise.all[postPromise,authorPromise]
+    fetchAllPosts();
   }
 
   return (
@@ -87,15 +82,21 @@ once you click set to specfic post id(would go with button) */}
       <div className='allposts'>
 
 
-        {posts.map((post, index) => (
-          <SinglePost key={index} singlePost={post} />
-        )
+        {posts.map((post, index) => {
+          return (
+            <SinglePost key={index} singlePost={post} />
+          )
+        }
         )}
+        {/* {Object.keys(posts).map((index,post) => (
+          <SinglePost key={index} singlePost={post} />
+        ))
+        } */}
       </div>
       <div>
 
         <h4>This is the workingAddPost.js displaying on allPosts component.</h4>
-        <AddPost addpost={handleInfo}/>
+        <AddPost addNewSubmission={handleInfo} />
 
       </div>
     </div>
